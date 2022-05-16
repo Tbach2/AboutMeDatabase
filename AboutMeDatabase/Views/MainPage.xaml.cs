@@ -21,6 +21,15 @@ namespace AboutMeDatabase
 
             listView.ItemsSource = await App.Database.GetItemsAsync();
         }
+        void OnSelection(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem == null)
+            {
+                return;
+            }
+            PersonalItem fact = (PersonalItem)e.SelectedItem;
+            DisplayAlert("The Fact", fact.Detail, "Ok");
+        }
 
     }
 }
